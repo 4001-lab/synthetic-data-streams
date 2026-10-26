@@ -1,0 +1,40 @@
+-a number of attributes
+-n numCentroids (default: 1) The number of centroids in the model.
+-m imbalance ratio
+-s Ratio of safe examples in positive class
+-b Ratio of borderline examples in positive class
+-p Ratio of rare examples in positive class
+-o Ratio of outlier examples in positive class
+-u Examples in positive class centroids distributed uniformly
+
+
+Balance Dataset
+WriteStreamToARFFFile -s (generators.ImbalancedGenerator -a 5 -m 0.5 -u) -f C:\Users\Training\10K_static5.arff -m 10000
+
+Static Imbalance + Borderline
+WriteStreamToARFFFile -s (generators.ImbalancedGenerator -a 5 -s 0.4 -b 0.6 -u) -f C:\Users\Training\50K_static01border06.arff -m 50000
+WriteStreamToARFFFile -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -b 0.8 -u) -f C:\Users\Training\50K_static05border08.arff -m 50000
+
+Static IR + Rare
+WriteStreamToARFFFile -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -p 0.6 -u) -f C:\Users\Training\50K_static05rare06.arff -m 50000
+
+Static IR + Splitting Clusters
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.11 -u) -d (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -n 5 -m 0.11 -u) -p 20000 -w 10000) -f C:\Users\Training\50K_static11split_gradual.arff -m 50000
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -n 5 -m 0.05 -u) -p 20000 -w 1) -f C:\Users\Training\50K_static11split_abrupt.arff -m 50000
+
+Static IR + Merging Clusters
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -n 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -m 0.05 -u) -p 20000 -w 1) -f C:\Users\Training\50K_static05merge_abrupt.arff -m 50000
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -n 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -m 0.05 -u) -p 20000 -w 10000) -f C:\Users\Training\50K_static05merge_gradual.arff -m 50000
+
+Static IR + Moving Clusters
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 3 -i 3 -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 4 -i 4 -a 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 5 -i 5 -a 5 -m 0.05 -u) -p 10000 -w 5000 -r 4) -p 10000 -w 5000 -r 3) -p 10000 -w 5000 -r 2) -p 10000 -w 5000) -f C:\Users\Training\50K_static05move_gradual.arff -m 50000
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 3 -i 3 -a 5 -m 0.05 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 4 -i 4 -a 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 5 -i 5 -a 5 -m 0.05 -u) -p 10000 -w 1 -r 4) -p 10000 -w 1 -r 3) -p 10000 -w 1 -r 2) -p 10000 -w 1) -f C:\Users\Training\50K_static05move_abrupt.arff -m 50000
+
+Increasing IR + Moving Clusters
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.5 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 2 -i 2 -a 5 -m 0.2 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 3 -i 3 -a 5 -u) -d (ConceptDriftStream -s (generators.ImbalancedGenerator -r 4 -i 4 -a 5 -m 0.05 -u) -d (generators.ImbalancedGenerator -r 5 -i 5 -a 5 -m 0.01 -u) -p 10000 -w 1 -r 4) -p 10000 -w 1 -r 3) -p 10000 -w 1 -r 2) -p 10000 -w 1) -f C:\Users\Training\Documents\salmanf\moa\dataset\50K_inc5To1move_abrupt.arff -m 50000
+
+
+
+
+
+
