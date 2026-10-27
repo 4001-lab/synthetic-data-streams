@@ -35,6 +35,9 @@ WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator 
 
 
 
+Static IR + Drift
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.imbalanced.BinaryImbalancedGenerator -i 0.01 -g generators.SEAGenerator) -d (ConceptDriftStream -s (generators.imbalanced.BinaryImbalancedGenerator -s 2 -i 0.01 -g (generators.SEAGenerator -f 2 -i 2)) -d (ConceptDriftStream -s (generators.imbalanced.BinaryImbalancedGenerator -s 3 -i 0.01 -g (generators.imbalanced.BinaryImbalancedGenerator -s 3 -i 0.01 -g (generators.SEAGenerator -f 3 -i 3))) -d (ConceptDriftStream -s (generators.imbalanced.BinaryImbalancedGenerator -s 4 -i 0.01 -g (generators.SEAGenerator -f 4 -i 4)) -d (generators.imbalanced.BinaryImbalancedGenerator -s 5 -g (generators.SEAGenerator -i 5)) -p 10000 -w 1 -r 4) -p 10000 -w 1 -r 3) -p 10000 -w 1 -r 2) -p 10000 -w 1) -f C:\Users\Training\sea50K_static01Abr.arff -m 50000
+
 
 
 
