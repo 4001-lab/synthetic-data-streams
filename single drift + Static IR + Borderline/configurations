@@ -1,0 +1,75 @@
+Data Difficulty Factors: Bordeline, Rare, splitting Clusters, Merging Clusters, Moving Cluster
+
+	IR: 0.01 --> 1%, 0.03 --> 3%, 0.05 --> 5%, 0.10 --> 10%
+
+	Static Borderline (-b): 0.6, 0.8
+	Increasing Borderline (-b): 0.2, 0.4, 0.6, 0.8, 1.0
+
+	Rare (-p): 0.6, 0.8
+	Increasing Rare (-p): 0.2, 0.4, 0.6, 0.8, 1.0
+
+	Splitting Clusters (-n): 1, 5  --> abrupt or gradual
+
+	Merging Clusters (-n): 5, 1 --> abrupt or gradual
+
+	Moving Clusters (-n): 1  --> abrupt or gradual
+
+
+
+
+*Single Drift + Static IR + Borderline*
+	  single drift (Abrupt) + 0.01 + 0.6
+	  single drift (Gradual) + 0.01 + 0.6 
+	  single drift (Abrupt) + 0.01 + 0.8 
+	  single drift (Graudal) + 0.01 + 0.8
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.4 -b 0.6 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\static IR + drifts\single drift + Static IR + Borderline\50K_static01_1dAbr_border6.arff) -m 50000 
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.4 -b 0.6 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\static IR + drifts\single drift + Static IR + Borderline\50K_static01_1dGrad_border6.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.2 -b 0.8 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static01_1dAbr_border8.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.01 -s 0.2 -b 0.8 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static01_1dGrad_border8.arff) -m 50000
+
+	  single drift (Abrupt) + 0.05 + 0.6 
+	  single drift (Gradual) + 0.05 + 0.6 
+	  single drift (Abrupt) + 0.05 + 0.8
+	  single drift (Gradual) + 0.05 + 0.8
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -b 0.6 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static05_1dAbr_border6.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.4 -b 0.6 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static05_1dGrad_border6.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.2 -b 0.8 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static05_1dAbr_border8.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -m 0.05 -s 0.2 -b 0.8 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static05_1dGrad_border8.arff) -m 50000	
+	
+	  single drift (Abr) + 0.10 + 0.6
+	  single drift (Grad) + 0.10 + 0.6
+	  single drift (Abr) + 0.10 + 0.8 
+	  single drift (Grad) + 0.10 + 0.8 
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -s 0.4 -b 0.6 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static10_1dAbr_border6.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -s 0.4 -b 0.6 -u) -d (generators.ImbalancedGenerator -a 5 -s 0.4 -b 0.6 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static10_1dGrad_border6.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -s 0.2 -b 0.8 -u) -p 25000 -w 1) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static10_1dAbr_border8.arff) -m 50000
+  WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -s 0.2 -b 0.8 -u) -d (generators.ImbalancedGenerator -a 5 -s 0.2 -b 0.8 -u) -p 25000 -w 10000) -f (C:\Users\Training\Documents\salmanf\moa\dataset\single drift + Static IR + Borderline\50K_static10_1dGrad_border8.arff) -m 50000
+
+
+
+Single Drift + Static IR + Rare
+	single drift (Abrupt) + 0.01 + 0.6
+	single drift (Gradual) + 0.01 + 0.6 
+	single drift (Abrupt) + 0.01 + 0.8 
+	single drift (Graudal) + 0.01 + 0.8
+
+	single drift (Abrupt) + 0.05 + 0.6 
+	single drift (Gradual) + 0.05 + 0.6 
+	single drift (Abrupt) + 0.05 + 0.8
+	single drift (Gradual) + 0.05 + 0.8
+
+	single drift (Abr) + 0.10 + 0.6
+	single drift (Grad) + 0.10 + 0.6
+	single drift (Abr) + 0.10 + 0.8 
+	single drift (Grad) + 0.10 + 0.8 
+
+Single Drift + Static IR + Splitting Clusters
+
+Single Drift + Static IR + Merging Clusters
+
+Single Drift + Static IR + Moving Clusters
+
+
+
+
+
