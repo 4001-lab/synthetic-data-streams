@@ -1,0 +1,4 @@
+**Single Drift + Static IR + Moving Clusters**
+	  Single Drift (Abr) + Static IR
+  
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -u) -d (generators.ImbalancedDriftGenerator -r 2 -i 2 -a 5 -u) -p 25000 -w 1) -f (/home/sf/Documents/PASTICS/moa/Synthetic-data Streams/Single Drift + Static IR + Moving/50K_static10_1dAbr_move.arff) -m 50000
