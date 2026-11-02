@@ -1,0 +1,16 @@
+Single Drift + Static IR + Rare
+	  single drift (Abrupt) + 0.01 + 0.6
+	  single drift (Gradual) + 0.01 + 0.6 
+	  single drift (Abrupt) + 0.01 + 0.8 
+	  single drift (Graudal) + 0.01 + 0.8
+
+	  single drift (Abrupt) + 0.05 + 0.6 
+	  single drift (Gradual) + 0.05 + 0.6 
+	  single drift (Abrupt) + 0.05 + 0.8
+	  single drift (Gradual) + 0.05 + 0.8
+
+	  single drift (Abr) + 0.10 + 0.6
+	  single drift (Grad) + 0.10 + 0.6
+	  single drift (Abr) + 0.10 + 0.8 
+  	single drift (Grad) + 0.10 + 0.8
+WriteStreamToARFFFile -s (ConceptDriftStream -s (generators.ImbalancedGenerator -a 5 -s 0.4 -p 0.6 -u) -d (generators.ImbalancedDriftGenerator -a 5 -s 0.4 -p 0.6 -u) -p 25000 -w 1) -f /home/sf/Documents/PASTICS/moa/dataset/50K_static10_1dAbr_rare6.arff -m 50000
